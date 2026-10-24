@@ -1,0 +1,13 @@
+{
+  "name": "Super Agent",
+  "short_name": "Super Agent",
+  "description": "Bilingual personal AI assistant prototype",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0e19",
+  "theme_color": "#101425",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
