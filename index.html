@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101425">
+  <meta name="description" content="Super Agent - your bilingual personal assistant prototype">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <title>Super Agent</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">✦</div>
+      <div class="brand-copy">
+        <h1>Super Agent</h1>
+        <p id="statusLine">Your personal assistant · Prototype</p>
+      </div>
+      <button id="installBtn" class="small-button hidden" type="button">Install</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="orb" aria-hidden="true"><span>✦</span></div>
+        <div>
+          <p class="eyebrow">YOUR AI WORKSPACE</p>
+          <h2>What can I help you build?</h2>
+          <p class="hero-note">বাংলা অথবা English-এ লিখুন বা কথা বলুন।</p>
+        </div>
+      </section>
+
+      <section class="controls card" aria-label="Voice and language settings">
+        <label>
+          <span>Assistant voice / কণ্ঠ</span>
+          <select id="voiceStyle">
+            <option value="female">Female · মেয়েলি কণ্ঠ</option>
+            <option value="male">Male · পুরুষ কণ্ঠ</option>
+          </select>
+        </label>
+        <label>
+          <span>Language / ভাষা</span>
+          <select id="language">
+            <option value="auto">Auto / স্বয়ংক্রিয়</option>
+            <option value="bn-BD">বাংলা</option>
+            <option value="en-US">English</option>
+          </select>
+        </label>
+        <div class="voice-actions">
+          <button id="speakToggle" class="secondary-button" type="button" aria-pressed="true">🔊 Voice on</button>
+          <button id="micBtn" class="secondary-button" type="button">🎙️ Speak</button>
+        </div>
+        <p id="voiceHint" class="hint">ভয়েস সুবিধা আপনার ব্রাউজার ও ডিভাইসের সমর্থনের ওপর নির্ভর করে।</p>
+      </section>
+
+      <section class="chat-card card">
+        <div class="section-heading">
+          <div>
+            <h3>Conversation</h3>
+            <p>Ask, plan, create</p>
+          </div>
+          <button id="clearBtn" class="text-button" type="button">Clear</button>
+        </div>
+        <div id="messages" class="messages" role="log" aria-live="polite">
+          <article class="message assistant">
+            <div class="avatar">✦</div>
+            <div class="bubble">
+              <strong>Super Agent</strong>
+              <p>স্বাগতম! আমি Super Agent-এর প্রথম প্রোটোটাইপ। আমি সাধারণ প্রশ্নের ডেমো উত্তর দিতে, কাজের পরিকল্পনা সাজাতে এবং একটি HTML প্রজেক্ট টেমপ্লেট তৈরি করতে পারি। আসল AI সংযোগ এখনো যোগ করা হয়নি।</p>
+            </div>
+          </article>
+        </div>
+        <form id="chatForm" class="composer">
+          <textarea id="userInput" rows="1" maxlength="4000" placeholder="আপনার নির্দেশ লিখুন… / Type your request…" aria-label="Message"></textarea>
+          <button id="sendBtn" class="send-button" type="submit" aria-label="Send message">➤</button>
+        </form>
+        <p class="hint">Enter = send · Shift+Enter = new line</p>
+      </section>
+
+      <section class="tools-section">
+        <div class="section-heading">
+          <div><h3>Quick tools</h3><p>Prototype tools with approval</p></div>
+        </div>
+        <div class="tool-grid">
+          <button class="tool-card" data-tool="plan" type="button"><span>🧭</span><strong>Plan a task</strong><small>ধাপে ধাপে পরিকল্পনা</small></button>
+          <button class="tool-card" data-tool="project" type="button"><span>🧩</span><strong>Build a project</strong><small>HTML starter project</small></button>
+          <button class="tool-card" data-tool="news" type="button"><span>🌍</span><strong>World news</strong><small>Live search not connected</small></button>
+          <button class="tool-card" data-tool="permission" type="button"><span>🛡️</span><strong>Permission demo</strong><small>Approve before action</small></button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Super Agent · Prototype v0.1</p>
+      <p>AI answers, live news, and device control require integrations. Never share passwords or secret keys in chat.</p>
+    </footer>
+  </div>
+
+  <dialog id="approvalDialog" class="modal">
+    <form method="dialog" class="modal-inner">
+      <div class="modal-icon">🛡️</div>
+      <h3>Permission required</h3>
+      <p id="approvalText">Super Agent wants to perform an action.</p>
+      <p class="hint">এই প্রোটোটাইপে অনুমতি পরীক্ষা দেখানো হয়; এটি আপনার ফোনের সব অ্যাপ নিয়ন্ত্রণ করতে পারে না।</p>
+      <div class="modal-actions">
+        <button id="denyBtn" class="secondary-button" value="deny">Deny / বাতিল</button>
+        <button id="approveBtn" class="send-button" value="approve">Approve / অনুমতি দিন</button>
+      </div>
+    </form>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>
